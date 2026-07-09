@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Sendwave Africa</title>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2D5016" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #F5F2EE;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #111827;
+      }
+      #root {
+        min-height: 100vh;
+      }
+      #boot-loader {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #6b7280;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"><div id="boot-loader">Loading Sendwave…</div></div>
+
+    <!-- React, ReactDOM, and the app are all bundled together offline in bundle.js -->
+    <script src="bundle.js"></script>
+
+    <!-- Register service worker for offline caching -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(err => {
+            console.warn('Service worker registration failed:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
